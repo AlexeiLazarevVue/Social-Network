@@ -38,7 +38,7 @@ class UserController {
       response.status(500).json(`No required data \n ${e}`)
     }
   }
-  async login(request, response) {
+  async authorization(request, response) {
     try {
       const { username, password } = request.body;
       const user = await User.findOne({ username })

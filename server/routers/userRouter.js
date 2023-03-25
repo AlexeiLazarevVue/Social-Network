@@ -19,7 +19,7 @@ userRouter.post(
   ],
   UserController.registration
 );
-userRouter.post('/login', UserController.login);
+userRouter.post('/authorization', UserController.authorization);
 
 userRouter.get('/users', [authMiddleware, roleMiddleware(['Admin'])], UserController.getAll);
 userRouter.get('/users/:id', authMiddleware, UserController.getOne);

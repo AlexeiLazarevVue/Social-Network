@@ -27,7 +27,7 @@
       @input="password = $event.target.value"
       type="text"
     />
-    <button @click.prevent="createUser()" type="submit">SignUp</button>
+    <button @click.prevent="register()" type="submit">SignUp</button>
   </form>
 </template>
 
@@ -42,7 +42,7 @@ export default {
       surname,
       age,
       password,
-      createUser,
+      register,
     } = registration();
 
     return {
@@ -52,7 +52,7 @@ export default {
       surname,
       age,
       password,
-      createUser,
+      register,
     };
   },
 };

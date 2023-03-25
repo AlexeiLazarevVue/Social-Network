@@ -9,7 +9,7 @@ export const registration = () => {
   const age = ref("")
   const password = ref("")
 
-  const createUser = async () => {
+  const register = async () => {
     try {
       const response = await axios.post(
         "http://localhost:5000/api/registration/",
@@ -28,6 +28,6 @@ export const registration = () => {
     }
   }
   return {
-    username, firstname, lastname, surname, age, password, createUser
+    username, firstname, lastname, surname, age, password, register
   }
 }
