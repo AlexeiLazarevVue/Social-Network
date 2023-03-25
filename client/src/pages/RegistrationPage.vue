@@ -3,7 +3,7 @@
 </template>
   
 <script>
-import RegistrationForm from '@/widgets/RegistrationForm/index.js'
+import RegistrationForm from '@/widgets/RegistrationForm/'
 
 export default {
   components: {RegistrationForm}

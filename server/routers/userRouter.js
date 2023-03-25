@@ -7,11 +7,14 @@ import UserController from '../controllers/UserController.js';
 const userRouter = new Router();
 
 
-userRouter.post('/', (req, res) => {console.log('Done');})
 userRouter.post(
   '/registration',
   [
-    check('username').isEmpty(),
+    check('username').notEmpty(),
+    check('firstname').notEmpty(),
+    check('lastname').notEmpty(),
+    check('surname').notEmpty(),
+    check('age').notEmpty().isInt(),
     check('password').isLength({ min: 8, max: 16 }),
   ],
   UserController.registration

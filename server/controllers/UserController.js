@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken';
 import { SECRET_KEY } from '../config.js'
 import Role from '../models/Role.js';
+import { validationResult } from 'express-validator';
 
 const generateAccessToken = (id, roles) => {
   const payload = {
@@ -15,6 +16,10 @@ const generateAccessToken = (id, roles) => {
 class UserController {
   async registration(request, response) {
     try {
+      const validationErrors = validationResult(request)
+      if (!validationErrors.isEmpty()) {
+        return response.status(500).json(validationErrors)
+      }
       const { username, firstname, lastname, surname, age, password } = request.body;
       const hashPassword = bcrypt.hashSync(password, 7)
       const userRole = await Role.findOne({ value: 'User' })

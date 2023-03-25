@@ -1,6 +1,6 @@
 import HomePage from '@/pages/HomePage'
 import RegistrationPage from '@/pages/RegistrationPage'
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
@@ -14,6 +14,6 @@ const routes = [
 ]
 const router = createRouter({
   routes,
-  history: createWebHashHistory(process.env.BASE_URL),
+  history: createWebHistory(process.env.BASE_URL),
 })
 export default router;

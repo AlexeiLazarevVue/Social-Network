@@ -1,76 +1,62 @@
 <template>
-<h1>dkslhjklasfd</h1>
+  <h1>dkslhjklasfd</h1>
   <form>
     <input
-      :value="username"
+      v-model="username"
       @input="username = $event.target.value"
       type="text"
     />
     <input
-      :value="firstname"
+      v-model="firstname"
       @input="firstname = $event.target.value"
       type="text"
     />
     <input
-      :value="lastname"
+      v-model="lastname"
       @input="lastname = $event.target.value"
       type="text"
     />
     <input
-      :value="surname"
+      v-model="surname"
       @input="surname = $event.target.value"
       type="text"
     />
-    <input :value="age" @input="age = $event.target.value" type="number" />
+    <input v-model="age" @input="age = $event.target.value" type="number" />
     <input
-      :value="password"
+      v-model="password"
       @input="password = $event.target.value"
       type="text"
     />
-    <button @click.prevent="registration()" type="submit">SignUp</button>
+    <button @click.prevent="createUser()" type="submit">SignUp</button>
   </form>
 </template>
 
 <script>
-import axios from "axios";
+import { registration } from "../api/registration";
 export default {
-  data() {
+  setup(props) {
+    const {
+      username,
+      firstname,
+      lastname,
+      surname,
+      age,
+      password,
+      createUser,
+    } = registration();
+
     return {
-      username: "",
-      firstname: "",
-      lastname: "",
-      surname: "",
-      age: "",
-      password: "",
+      username,
+      firstname,
+      lastname,
+      surname,
+      age,
+      password,
+      createUser,
     };
   },
-  methods: {
-    async registration() {
-      try {
-        const response = await axios.post(
-        "http://localhost:5000/api/registration/",
-          { 
-            username: this.username,
-            firstname: this.firstname,
-            lastname: this.lastname,
-            surname: this.surname,
-            age: this.age,
-            password: this.password,
-          }
-        );
-        console.log(response.data);
-      } catch(e) {
-        console.log(e);
-      }
-      
-
-      // this.posts = response.data
-    },
-  },
-  mounted() {},
 };
 </script>
 
 <style lang="less">
-
 </style>
