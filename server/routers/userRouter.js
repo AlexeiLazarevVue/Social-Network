@@ -6,6 +6,8 @@ import UserController from '../controllers/UserController.js';
 
 const userRouter = new Router();
 
+
+userRouter.post('/', (req, res) => {console.log('Done');})
 userRouter.post(
   '/registration',
   [

@@ -15,13 +15,13 @@ const generateAccessToken = (id, roles) => {
 class UserController {
   async registration(request, response) {
     try {
-      const { username, firstName, lastName, surname, age, password } = request.body;
+      const { username, firstname, lastname, surname, age, password } = request.body;
       const hashPassword = bcrypt.hashSync(password, 7)
       const userRole = await Role.findOne({ value: 'User' })
       const user = await User.create({
         username,
-        firstName,
-        lastName,
+        firstname,
+        lastname,
         surname,
         age,
         roles: [userRole.value],
@@ -46,7 +46,7 @@ class UserController {
       };
       const token = generateAccessToken(user._id, user.roles)
 
-      response.json({ token })
+      return response.json({ token })
     } catch (e) {
       response.status(500).json(e)
     }
