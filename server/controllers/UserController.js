@@ -51,7 +51,7 @@ class UserController {
       };
       const token = generateAccessToken(user._id, user.roles)
 
-      return response.json({ token })
+      return response.json({ token, user: {id: user._id} })
     } catch (e) {
       response.status(500).json(e)
     }

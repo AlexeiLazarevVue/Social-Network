@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 
 export const authorization = () => {
   const username = ref("")
   const password = ref("")
+  const store = useStore()
 
   const authorize = async () => {
     try {
@@ -14,7 +16,8 @@ export const authorization = () => {
           password: password.value,
         }
       );
-      localStorage.setItem("token", response.data.token)
+      store.state.token = response.data.token;
+      store.state.user = response.data.user;
     } catch (e) {
       console.log(e);
     }
