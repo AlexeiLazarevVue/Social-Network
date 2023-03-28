@@ -2,6 +2,7 @@ import Router from 'express';
 import { check } from 'express-validator';
 import authMiddleware from '../middlewares/authMiddleware.js';
 import roleMiddleware from '../middlewares/roleMiddleware.js';
+import ownerMiddleware from '../middlewares/ownerMiddleware.js';
 import UserController from '../controllers/UserController.js';
 
 const userRouter = new Router();

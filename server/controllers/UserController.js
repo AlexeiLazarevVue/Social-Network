@@ -13,6 +13,12 @@ const generateAccessToken = (id, roles) => {
   return jwt.sign(payload, SECRET_KEY, { expiresIn: '24h' })
 }
 
+const isAllowed = (request) => {
+  if (request.user.isOwner || request.user.hasRole) {
+    return true;
+  }
+}
+
 class UserController {
   async registration(request, response) {
     try {
@@ -65,7 +71,11 @@ class UserController {
 
   async getOne(request, response) {
     const { id } = request.params;
-    const user = await User.findById(id);
+    if(isAllowed(request)) {
+      const user = await User.findById(id).select('+password');
+    } else {
+      const user = await User.findById(id);
+    }
 
     return response.json(user);
   }
