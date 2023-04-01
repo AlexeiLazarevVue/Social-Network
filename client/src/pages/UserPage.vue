@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import UserData from "../widgets/UserData/";
+import UserData from "@/widgets/UserData/";
 
 export default {
   components: { UserData },

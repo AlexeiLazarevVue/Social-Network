@@ -1,7 +1,7 @@
 <template>
-  <!-- <Suspense> -->
-  <header-widget></header-widget>
-  <!-- </Suspense> -->
+  <Suspense>
+    <header-widget></header-widget>
+  </Suspense>
   <router-view></router-view>
 </template>
 

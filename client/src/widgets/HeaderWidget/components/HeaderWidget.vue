@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="`/users/${user._id}`">Link</router-link>
+    <router-link :to="`/users/${user._id}`">My profile</router-link>
 </template>
 
 <script>
