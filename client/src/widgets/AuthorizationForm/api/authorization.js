@@ -16,8 +16,16 @@ export const authorization = () => {
           password: password.value,
         }
       );
-      store.state.token = response.data.token;
-      store.state.user = response.data.user;
+      const user = response.data
+
+      for (let userKey in user) {
+        const userValue = user[userKey]
+        const payload = {
+          key: userKey,
+          value: userValue
+        }
+        store.commit('setCookie', payload)
+      }
     } catch (e) {
       console.log(e);
     }

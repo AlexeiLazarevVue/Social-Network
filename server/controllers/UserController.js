@@ -47,7 +47,7 @@ class UserController {
   async authorization(request, response) {
     try {
       const { username, password } = request.body;
-      const user = await User.findOne({ username })
+      const user = await User.findOne({ username }).select('+password')
       if (!user) {
         return response.status(400).json("User does not exist")
       }
@@ -57,7 +57,7 @@ class UserController {
       };
       const token = generateAccessToken(user._id, user.roles)
 
-      return response.json({ token, user: {id: user._id} })
+      return response.json({ token, id: user._id })
     } catch (e) {
       response.status(500).json(e)
     }
@@ -71,12 +71,12 @@ class UserController {
 
   async getOne(request, response) {
     const { id } = request.params;
+    let user = '';
     if(isAllowed(request)) {
-      const user = await User.findById(id).select('+password');
+      user = await User.findById(id).select('+password');
     } else {
-      const user = await User.findById(id);
+      user = await User.findById(id);
     }
-
     return response.json(user);
   }
 

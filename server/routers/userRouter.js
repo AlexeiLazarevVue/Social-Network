@@ -23,7 +23,7 @@ userRouter.post(
 userRouter.post('/authorization', UserController.authorization);
 
 userRouter.get('/users', [authMiddleware, roleMiddleware(['Admin'])], UserController.getAll);
-userRouter.get('/users/:id', authMiddleware, UserController.getOne);
+userRouter.get('/users/:id', [authMiddleware, ownerMiddleware, roleMiddleware(['Admin'])], UserController.getOne);
 
 userRouter.put('/users/:id', UserController.update);
 userRouter.delete('/users/:id', UserController.delete);
