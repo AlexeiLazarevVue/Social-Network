@@ -14,11 +14,10 @@ export const getUser = () => {
         Authorization: 'bearer ' + token
       }
     })
-    console.log(response.data);
     user.value = response.data
   }
 
   onMounted(getData)
   
-  return user
+  return { user }
 }

@@ -11,12 +11,10 @@ export default function RoleMiddleware(roles) {
           hasRole = true
         }
       });
-      if (hasRole || request.user.isOwner) {
+      if (hasRole) {
         request.user.hasRole = hasRole;
-        next()
-      } else {
-        response.status(400).json({ message: 'You have no rights to do this' })
       }
+      next()
     } catch (e) {
       console.log(e);
       response.status(400).json({ message: 'You have no rights to do this' })

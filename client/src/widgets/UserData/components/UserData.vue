@@ -6,6 +6,7 @@
     <div>{{ user.lastname }}</div>
     <div>{{ user.surname }}</div>
     <div>{{ user.age }}</div>
+    <div>{{ user.password }}</div>
   </div>
 </template>
 
