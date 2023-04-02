@@ -1,8 +1,9 @@
 import express from 'express';
-import cors from 'cors'
+import cors from 'cors';
 import mongoose from 'mongoose';
+import multer from 'multer';
 import postRouter from './routers/postRouter.js';
-import userRouter from './routers/userRouter.js'
+import userRouter from './routers/userRouter.js';
 
 const PORT = 5000;
 
@@ -16,9 +17,17 @@ const DB_URL = 'mongodb+srv://Lunnaya_Pchola:Alexei2008@cluster0.fexz4.mongodb.n
 
 const app = express();
 
-app.use(express.json())
-app.use(cors())
-app.use('/api', postRouter)
+app.use(express.json());
+app.use(cors());
+app.use(
+  multer({
+    dest: './uploads/',
+    rename: function (fieldname, filename) {
+      return filename;
+    },
+  }).single('image')
+);
+app.use('/api', postRouter);
 app.use('/api', userRouter);
 
 async function startApp() {

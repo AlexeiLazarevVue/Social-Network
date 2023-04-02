@@ -1,10 +1,19 @@
 import Post from '../models/Post.js';
+import fs from 'fs'
 
 class PostController {
   async create(request, response) {
-    const { author, title, content, image } = request.body;
+    const { userId, title, content } = request.body;
+    console.log(request.file.path);
+    const imagePath = request.file.path
+    const date = new Date(Date.now()).toUTCString()
 
-    const post = await Post.create({ author, title, content, image });
+    const post = await Post.create({
+      userId, title, content, date, image: {
+        data: fs.readFileSync(imagePath),
+        contentType: 'image/png'
+      }
+    });
     response.json(post);
   }
 
