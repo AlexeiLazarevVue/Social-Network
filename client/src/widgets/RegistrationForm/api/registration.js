@@ -22,7 +22,6 @@ export const registration = () => {
           password: password.value,
         }
       );
-      console.log(response.data);
     } catch (e) {
       console.log(e);
     }

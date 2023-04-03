@@ -4,7 +4,6 @@ import fs from 'fs'
 class PostController {
   async create(request, response) {
     const { userId, title, content } = request.body;
-    console.log(request.file.path);
     const imagePath = request.file.path
     const date = new Date(Date.now()).toUTCString()
 

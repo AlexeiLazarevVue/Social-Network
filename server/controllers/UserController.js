@@ -72,7 +72,6 @@ class UserController {
   async getOne(request, response) {
     const { id } = request.params;
     let user = '';
-    console.log(request);
     if(isAllowed(request)) {
       user = await User.findById(id).select('+password');
     } else {

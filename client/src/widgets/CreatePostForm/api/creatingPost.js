@@ -7,19 +7,13 @@ export const creatingPost = () => {
   const content = ref('');
   const image = ref('');
   const store = useStore()
-  const reader = new FileReader();
   const setImage = (event) => {
     image.value = event.target.files[0];
   };
 
   const createPost = async () => {
     try {
-      console.log(reader);
-      console.log(image.value);
-      console.log();
-      reader.readAsDataURL(image.value);
       reader.onload = async () => {
-        const encodedImage = reader.result.split(',')[1];
         const id = store.getters.getCookie('id');
         const token = store.getters.getCookie('token');
         const response = await axios.post(
@@ -37,7 +31,6 @@ export const creatingPost = () => {
             },
           }
         );
-        console.log(response.data);
       };
     } catch (e) {
       console.log(e);
