@@ -1,5 +1,5 @@
 import axios from "axios"
-import { computed, onMounted, ref } from "vue"
+import { computed, watch, onMounted, ref } from "vue"
 import { useRoute } from "vue-router"
 import { useStore } from "vuex"
 
@@ -8,11 +8,11 @@ export const getUser = () => {
   const route = useRoute()
 
   const user = ref('')
-  const id = route.params.id
+  const id = computed(() => route.params.id)
   const token = computed(() => store.state.token)
 
   const getData = async () => {
-    const response = await axios.get(`http://localhost:5000/api/users/${id}`, {
+    const response = await axios.get(`http://localhost:5000/api/users/${id.value}`, {
       headers: {
         Authorization: 'bearer ' + token.value
       }
@@ -21,6 +21,7 @@ export const getUser = () => {
   }
 
   onMounted(getData)
+  watch(id, getData)
 
   return { user }
 }
