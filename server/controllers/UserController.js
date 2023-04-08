@@ -64,9 +64,13 @@ class UserController {
   }
 
   async getAll(request, response) {
-    const users = await User.find();
+    try {
+      const users = await User.find();
 
-    return response.json(users);
+      return response.json(users);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async getOne(request, response) {
@@ -86,17 +90,26 @@ class UserController {
   }
 
   async update(request, response) {
-    const { id } = request.params;
-    const updatedUser = await User.findByIdAndUpdate(id, request.body);
+    try {
+      const { id } = request.params;
+      const updatedUser = await User.findByIdAndUpdate(id, request.body);
 
-    return response.json(updatedUser);
+      return response.json(updatedUser);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async delete(request, response) {
-    const { id } = request.params;
-    const deletedUser = await User.findByIdAndDelete(id);
+    try {
+      const { id } = request.params;
+      const deletedUser = await User.findByIdAndDelete(id);
 
-    response.json(deletedUser);
+      response.json(deletedUser);
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 }
 
