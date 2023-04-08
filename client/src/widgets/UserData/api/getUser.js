@@ -1,19 +1,20 @@
 import axios from "axios"
-import { onMounted, ref } from "vue"
+import { computed, onMounted, ref } from "vue"
 import { useRoute } from "vue-router"
 import { useStore } from "vuex"
 
 export const getUser = () => {
-  const user = ref('')
   const store = useStore()
   const route = useRoute()
+
+  const user = ref('')
+  const id = route.params.id
+  const token = computed(() => store.state.token)
+
   const getData = async () => {
-    const id = route.params.id
-    const token = store.getters.getCookie('token')
-    
     const response = await axios.get(`http://localhost:5000/api/users/${id}`, {
       headers: {
-        Authorization: 'bearer ' + token
+        Authorization: 'bearer ' + token.value
       }
     })
     user.value = response.data

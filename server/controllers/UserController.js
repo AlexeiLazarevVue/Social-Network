@@ -70,14 +70,19 @@ class UserController {
   }
 
   async getOne(request, response) {
-    const { id } = request.params;
-    let user = '';
-    if(isAllowed(request)) {
-      user = await User.findById(id).select('+password');
-    } else {
-      user = await User.findById(id);
+    try {
+      const { id } = request.params;
+      let user = '';
+      if (isAllowed(request)) {
+        user = await User.findById(id).select('+password');
+      } else {
+        user = await User.findById(id);
+      }
+      return response.json(user);
+    } catch (error) {
+      console.log(error);
     }
-    return response.json(user);
+
   }
 
   async update(request, response) {

@@ -1,3 +1,4 @@
+import cookieController from '@/app/cookieController'
 import axios from 'axios'
 import { ref } from 'vue'
 import { useStore } from 'vuex'
@@ -18,13 +19,16 @@ export const authorization = () => {
       );
       const user = response.data
 
+      store.state.id = user.id
+      store.state.token = user.token
+
       for (let userKey in user) {
         const userValue = user[userKey]
         const payload = {
           key: userKey,
           value: userValue
         }
-        store.commit('setCookie', payload)
+        cookieController.setCookie(payload)
       }
     } catch (e) {
       console.log(e);
