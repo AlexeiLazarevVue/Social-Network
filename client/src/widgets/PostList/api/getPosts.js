@@ -19,10 +19,8 @@ export const getPosts = () => {
         Authorization: 'bearer ' + token.value
       }
     })
-    console.log(response.data);
     posts.value = response.data
     posts.value.forEach((post) => post.image.data.data = convertToImageFormat(post.image.data.data))
-    console.log(posts.value);
   }
 
   onMounted(getData)

@@ -9,7 +9,6 @@ export const creatingPost = () => {
   const store = useStore()
   const setImage = (event) => {
     image.value = event.target.files[0];
-    console.log(image);
   };
 
   const createPost = async () => {

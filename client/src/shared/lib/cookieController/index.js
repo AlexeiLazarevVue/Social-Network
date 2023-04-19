@@ -32,9 +32,7 @@ class cookieController {
         }
       }
 
-      console.log(updatedCookie);
       document.cookie = updatedCookie;
-      console.log(document.cookie);
     } catch (error) {
       console.log(error);
     }
