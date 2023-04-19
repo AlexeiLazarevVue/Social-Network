@@ -9,7 +9,7 @@ class cookieController {
   }
   setCookie(payload) {
     try {
-      const { key, value, options} = payload
+      const { key, value, options = {}} = payload
 
       let date = new Date(Date.now() + 86400e3);
       date = date.toUTCString();

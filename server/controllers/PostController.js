@@ -5,14 +5,16 @@ class PostController {
   async create(request, response) {
     const { userId, title, content } = request.body;
     const imagePath = request.file.path
+    console.log(imagePath);
     const date = new Date(Date.now()).toUTCString()
 
     const post = await Post.create({
       userId, title, content, date, image: {
-        data: fs.readFileSync(imagePath),
+        data: fs.readFileSync(imagePath).toString('base64'),
         contentType: 'image/png'
       }
     });
+    console.log('fsfs');
     response.json(post);
   }
 
@@ -20,6 +22,18 @@ class PostController {
     const posts = await Post.find();
 
     return response.json(posts);
+  }
+
+  async getAllByUser(request, response) {
+    try {
+      const { userId } = request.params
+
+      const posts = await Post.find({ userId });
+
+      return response.json(posts);
+    } catch (error) {
+      response.status(500).json(error)
+    }
   }
 
   async getOne(request, response) {

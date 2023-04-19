@@ -58,8 +58,8 @@ class UserController {
       const token = generateAccessToken(user._id, user.roles)
 
       return response.json({ token, id: user._id })
-    } catch (e) {
-      response.status(500).json(e)
+    } catch (error) {
+      response.status(500).json(error)
     }
   }
 
@@ -69,7 +69,7 @@ class UserController {
 
       return response.json(users);
     } catch (error) {
-      console.log(error);
+      response.status(500).json(error)
     }
   }
 
@@ -84,7 +84,7 @@ class UserController {
       }
       return response.json(user);
     } catch (error) {
-      console.log(error);
+      response.status(500).json(error)
     }
 
   }
@@ -96,7 +96,7 @@ class UserController {
 
       return response.json(updatedUser);
     } catch (error) {
-      console.log(error);
+      response.status(500).json(e)
     }
   }
 
@@ -107,7 +107,7 @@ class UserController {
 
       response.json(deletedUser);
     } catch (error) {
-      console.log(error);
+      response.status(500).json(e)
     }
 
   }
