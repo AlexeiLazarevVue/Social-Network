@@ -1,4 +1,4 @@
-import cookieController from '@/app/cookieController'
+import cookieController from '@/shared/lib/cookieController'
 import axios from 'axios'
 import { ref } from 'vue'
 import { useStore } from 'vuex'

@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import cookieController from "../cookieController";
+import cookieController from "../../shared/lib/cookieController";
 
 export default createStore({
   state: {
