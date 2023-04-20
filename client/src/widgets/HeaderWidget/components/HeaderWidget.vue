@@ -1,5 +1,7 @@
 <template>
+  <header>
     <router-link :to="`/users/${user._id}`">My profile</router-link>
+  </header>
 </template>
 
 <script>
@@ -16,5 +18,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less" scoped>
+  header {
+    background: #1f1f1f;
+    a {
+      display: flex;
+      padding: 20px;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
 </style>
