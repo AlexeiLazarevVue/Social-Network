@@ -2,7 +2,10 @@
   <Suspense>
     <header-widget></header-widget>
   </Suspense>
-  <router-view></router-view>
+  <div class="router-content">
+    <router-view></router-view>
+  </div>
+  
 </template>
 
 <script>
@@ -12,7 +15,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 * {
   padding: 0;
   margin: 0;
@@ -20,5 +23,9 @@ export default {
 }
 body {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  .router-content {
+    padding: 20px;
+  }
 }
 </style>

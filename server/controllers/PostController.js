@@ -24,24 +24,28 @@ class PostController {
     return response.json(posts);
   }
 
-  async getAllByUser(request, response) {
+  async getAllIdsByUser(request, response) {
     try {
       const { userId } = request.params
 
-      const posts = await Post.find({ userId });
+      const postsId = await Post.find({ userId }).select('_id');
 
-      return response.json(posts);
+      return response.json(postsId);
     } catch (error) {
       response.status(500).json(error)
     }
   }
 
   async getOne(request, response) {
-    const { id } = request.params;
+    try {
+      const { id } = request.params;
 
-    const post = await Post.findById(id);
+      const post = await Post.findById(id);
 
-    return response.json(post);
+      return response.json(post);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async update(request, response) {

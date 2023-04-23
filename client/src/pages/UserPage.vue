@@ -4,12 +4,7 @@
   </Suspense>
   <create-post-form></create-post-form>
   <Suspense>
-    <template #default>
-      <post-list></post-list>
-    </template>
-    <template #fallback>
-      <p>skasaklasa</p>
-    </template>
+    <post-list></post-list>
   </Suspense>
 </template>
 
@@ -23,6 +18,6 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less" scoped>
 
 </style>

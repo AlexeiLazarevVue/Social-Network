@@ -1,4 +1,3 @@
-import convertToImageFormat from '@/shared/lib/convertToImageFormat'
 import axios from "axios"
 import { onMounted, computed, ref } from "vue"
 import { useRoute } from "vue-router"
@@ -9,7 +8,7 @@ export const getPosts = () => {
   const route = useRoute()
 
 
-  const posts = ref([])
+  const postsId = ref([])
   const id = computed(() => route.params.id)
   const token = computed(() => store.state.token)
 
@@ -17,13 +16,12 @@ export const getPosts = () => {
     const response = await axios.get(`http://localhost:5000/api/posts/users/${id.value}`, {
       headers: {
         Authorization: 'bearer ' + token.value
-      }
+      },
     })
-    posts.value = response.data
-    posts.value.forEach((post) => post.image.data.data = convertToImageFormat(post.image.data.data))
+    postsId.value = response.data
   }
 
   onMounted(getData)
 
-  return { posts }
+  return { postsId }
 }
