@@ -3,5 +3,6 @@ export const userModule = {
   state: {
     token: cookieController.getCookie('token'),
     id: cookieController.getCookie('id'),
-  }
+  },
+  namespaced: true
 }

@@ -24,7 +24,7 @@ export const getPost = (props) => {
 
       post.value = response.data;
       post.value.image.data.data = convertToImage(post.value.image.data.data);
-      store.state.post.posts.push(post.value)
+      store.commit('post/addPost', post.value)
     }
 
     isPostLoading.value = false;
