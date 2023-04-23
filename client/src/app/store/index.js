@@ -1,9 +1,10 @@
 import { createStore } from "vuex";
-import cookieController from "../../shared/lib/cookieController";
+import { postModule } from "./modules/postModule";
+import { userModule } from "./modules/userModule";
 
 export default createStore({
-  state: {
-    token: cookieController.getCookie('token'),
-    id: cookieController.getCookie('id')
-  },
+  modules: {
+    post: postModule,
+    user: userModule
+  }
 })

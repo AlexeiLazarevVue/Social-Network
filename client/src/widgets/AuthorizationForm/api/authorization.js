@@ -19,8 +19,8 @@ export const authorization = () => {
       );
       const user = response.data
 
-      store.state.id = user.id
-      store.state.token = user.token
+      store.state.user.id = user.id
+      store.state.user.token = user.token
 
       for (let userKey in user) {
         const userValue = user[userKey]

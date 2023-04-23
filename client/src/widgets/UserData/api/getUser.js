@@ -9,7 +9,7 @@ export const getUser = () => {
 
   const user = ref('')
   const id = computed(() => route.params.id)
-  const token = computed(() => store.state.token)
+  const token = computed(() => store.state.user.token)
 
   const getData = async () => {
     const response = await axios.get(`http://localhost:5000/api/users/${id.value}`, {

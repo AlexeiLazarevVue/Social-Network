@@ -8,18 +8,24 @@ export const getPost = (props) => {
 
   const post = ref('');
   const isPostLoading = ref(true);
-  const token = computed(() => store.state.token);
+  const token = computed(() => store.state.user.token);
 
   const getData = async () => {
-    const response = await axios.get(`http://localhost:5000/api/posts/${props.id}`, {
-      headers: {
-        Authorization: 'bearer ' + token.value,
-      },
-    }
-    );
+    const condidate = store.state.post.posts.find((post) => post._id == props.id)
+    if(condidate) {
+      post.value = condidate
+    } else {
+      const response = await axios.get(`http://localhost:5000/api/posts/${props.id}`, {
+        headers: {
+          Authorization: 'bearer ' + token.value,
+        },
+      }
+      );
 
-    post.value = response.data;
-    post.value.image.data.data = convertToImage(post.value.image.data.data);
+      post.value = response.data;
+      post.value.image.data.data = convertToImage(post.value.image.data.data);
+      store.state.post.posts.push(post.value)
+    }
 
     isPostLoading.value = false;
   };
