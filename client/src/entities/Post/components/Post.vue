@@ -21,7 +21,6 @@ export default {
   },
   async setup(props) {
     const { post, isPostLoading } = getPost(props);
-    console.log(post);
 
     return {
       post,
