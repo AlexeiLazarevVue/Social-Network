@@ -1,7 +1,7 @@
 <template>
-  <div v-for="id in postsId" :key="id">
+  <div class="post-list">
     <Suspense>
-      <post :id="id._id"></post>
+      <post v-for="id in postsId" :key="id" :id="id._id"></post>
     </Suspense>
   </div>
 </template>
@@ -21,4 +21,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang='less' scoped>
+.post-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+</style>

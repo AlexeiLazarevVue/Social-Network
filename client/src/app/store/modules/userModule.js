@@ -1,4 +1,4 @@
-import cookieController from "@/shared/lib/cookieController";
+import cookieController from "@/shared/lib/cookieController/cookieController";
 export const userModule = {
   state: {
     token: cookieController.getCookie('token'),

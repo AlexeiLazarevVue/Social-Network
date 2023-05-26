@@ -1,4 +1,4 @@
-import convertToImage from '@/shared/lib/convertToImage';
+import convertToImage from '@/shared/lib/convertToImage/convertToImage';
 import axios from 'axios';
 import { onMounted, ref, computed } from 'vue';
 import { useStore } from 'vuex';

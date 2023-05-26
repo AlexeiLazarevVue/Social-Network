@@ -3,21 +3,25 @@ import fs from 'fs';
 
 class PostController {
   async create(request, response) {
-    const { userId, title, content } = request.body;
-    const imagePath = request.file.path;
-    const date = new Date(Date.now()).toUTCString();
+    try {
+      const { userId, content } = request.body;
+      const imagePath = request.file.path;
+      const date = new Date(Date.now()).toUTCString();
 
-    const post = await Post.create({
-      userId,
-      title,
-      content,
-      date,
-      image: {
-        data: fs.readFileSync(imagePath).toString('base64'),
-        contentType: 'image/png',
-      },
-    });
-    response.json(post);
+      const post = await Post.create({
+        userId,
+        content,
+        date,
+        image: {
+          data: fs.readFileSync(imagePath).toString('base64'),
+          contentType: 'image/png',
+        },
+      });
+      response.json(post);
+    } catch (error) {
+      console.log(error);
+    }
+    
   }
 
   async getAll(request, response) {

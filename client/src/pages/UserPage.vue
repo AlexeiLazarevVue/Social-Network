@@ -2,7 +2,6 @@
   <Suspense>
     <user-data></user-data>
   </Suspense>
-  <create-post-form></create-post-form>
   <Suspense>
     <post-list></post-list>
   </Suspense>

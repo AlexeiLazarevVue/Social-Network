@@ -13,8 +13,8 @@ export const creatingPost = () => {
 
   const createPost = async () => {
     try {
-      const id = store.state.id
-      const token = store.state.token;
+      const id = store.state.user.id
+      const token = store.state.user.token;
       const response = await axios.post(
         'http://localhost:5000/api/posts/',
         {
@@ -30,6 +30,7 @@ export const creatingPost = () => {
           },
         }
       );
+      store.commit('modal/setIsCreatePostModalActive')
     } catch (e) {
       console.log(e);
     }

@@ -1,4 +1,4 @@
-import convertToImage from '../../src/shared/lib/convertToImage';
+import convertToImage from '../../src/shared/lib/convertToImage/convertToImage';
 
 describe('convertToImage', () => {
   test('Корректное значение', () => {
