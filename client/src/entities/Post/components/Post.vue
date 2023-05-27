@@ -9,12 +9,15 @@
       alt=""
       srcset=""
     />
+    <delete-button :id='id'></delete-button>
   </div>
 </template>
 
 <script>
+import DeleteButton from '@/features/DeleteButton'
 import { getPost } from "../api/getPost";
 export default {
+  components: { DeleteButton },
   props: {
     id: {
       type: String,
