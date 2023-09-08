@@ -35,5 +35,6 @@ export const getPost = (props) => {
   return {
     post,
     isPostLoading,
+    getData
   };
 };

@@ -3,6 +3,7 @@
     <p>{{ post.userId }}</p>
     <p>{{ post.content }}</p>
     <p>{{ post.date }}</p>
+    <h2>{{post.likes}}</h2>
     <img
       class="post__image"
       :src="`data:${post.image.contentType};base64,${post.image.data.data}`"
@@ -10,14 +11,18 @@
       srcset=""
     />
     <delete-button :id='id'></delete-button>
+    <Suspense>
+    <like-button :id="id" :likes='post.likes' @like="setLikes"></like-button>
+    </Suspense>
   </div>
 </template>
 
 <script>
 import DeleteButton from '@/features/DeleteButton'
+import LikeButton from '@/features/LikeButton'
 import { getPost } from "../api/getPost";
 export default {
-  components: { DeleteButton },
+  components: { DeleteButton, LikeButton },
   props: {
     id: {
       type: String,
@@ -25,11 +30,17 @@ export default {
     },
   },
   async setup(props) {
-    const { post, isPostLoading } = getPost(props);
+    const { post, isPostLoading, getData } = getPost(props);
+
+    const setLikes = (likes) => {
+      post.value.likes = likes
+    }
 
     return {
       post,
       isPostLoading,
+      getData,
+      setLikes
     };
   },
 };

@@ -21,7 +21,7 @@ class PostController {
     } catch (error) {
       console.log(error);
     }
-    
+
   }
 
   async getAll(request, response) {
@@ -49,7 +49,7 @@ class PostController {
       const post = await Post.findById(id);
 
       return response.json(post);
-    } catch (error) {}
+    } catch (error) { }
   }
 
   async update(request, response) {

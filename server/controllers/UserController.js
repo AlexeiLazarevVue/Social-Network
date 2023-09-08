@@ -109,7 +109,6 @@ class UserController {
     } catch (error) {
       response.status(500).json(e)
     }
-
   }
 }
 

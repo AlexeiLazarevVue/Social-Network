@@ -8,6 +8,7 @@ const User = new mongoose.Schema({
   age: { type: Number, required: true },
   roles: [{ type: String, required: true, ref: "Role" }],
   password: { type: String, select: false, required: true },
+  likedPosts: [{ type: String }]
 });
 
 export default mongoose.model('User', User);
