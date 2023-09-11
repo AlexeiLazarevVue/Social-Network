@@ -1,5 +1,5 @@
 <template>
-  <main-button @click="setLikes">Like</main-button>
+  <action-menu-button @click="setLikes">Like</action-menu-button>
 </template>
 
 <script>
