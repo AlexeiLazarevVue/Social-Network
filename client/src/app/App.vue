@@ -44,7 +44,6 @@ body {
   background: @primary;
   color: @white;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
 }
 
 .container {

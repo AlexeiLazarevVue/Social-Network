@@ -18,6 +18,7 @@ export default {
     border: none;
     background: @secondary;
     color: #fff;
+    font-size: 18px;
     font-weight: 600;
     font-family: "Inter", sans-serif;
     transition: 0.3s;

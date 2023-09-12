@@ -128,6 +128,7 @@ export default {
         text-decoration: none;
         font-size: 14px;
         transition: 0.1s;
+        font-weight: 600;
         &:hover {
           color: @white;
         }
