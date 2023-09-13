@@ -11,7 +11,7 @@ export const getPost = (props) => {
   const token = computed(() => store.state.user.token);
 
   const getData = async () => {
-    const condidate = store.state.post.posts.find((post) => post._id == props.id && post.userId == store.state.user.id)
+    const condidate = store.state.post.posts.find((post) => post._id == props.id)
     if(condidate) {
       post.value = condidate
     } else {
