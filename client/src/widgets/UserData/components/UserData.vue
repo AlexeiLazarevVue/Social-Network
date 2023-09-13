@@ -66,9 +66,11 @@ export default {
     border-radius: 100%;
   }
   &__secondary-info {
+    height: auto;
     padding: 20px 30px;
     font-size: 24px;
     border-radius: 20px;
+    word-break: break-all;
     background: @dark-primary;
   }
 }
