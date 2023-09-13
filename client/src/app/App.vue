@@ -10,9 +10,9 @@
     </div>
     <div class="right-side">
       <div class="right-side__content">
-        <Suspense>
+        <!-- <Suspense>
           <header-widget></header-widget>
-        </Suspense>
+        </Suspense> -->
         <div class="router-content">
           <router-view></router-view>
         </div>
