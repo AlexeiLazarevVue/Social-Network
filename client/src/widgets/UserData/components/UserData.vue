@@ -18,7 +18,7 @@
         <p>Lastname: {{ user.lastname }}</p>
         <p>Surname: {{ user.surname }}</p>
         <p>Age: {{ user.age }}</p>
-        <p>Password: {{ user.password }}</p>
+        <p v-if="user.password">Password: {{ user.password }}</p>
       </div>
     </div>
   </div>

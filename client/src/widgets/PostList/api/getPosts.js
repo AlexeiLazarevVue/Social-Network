@@ -1,5 +1,5 @@
 import axios from "axios"
-import { onMounted, computed, ref } from "vue"
+import { onMounted, computed, ref, watch } from "vue"
 import { useRoute } from "vue-router"
 import { useStore } from "vuex"
 
@@ -20,6 +20,8 @@ export const getPosts = () => {
     })
     postsId.value = response.data
   }
+
+  watch(id, getData)
 
   onMounted(getData)
 
