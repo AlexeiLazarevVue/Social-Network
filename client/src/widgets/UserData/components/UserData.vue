@@ -44,7 +44,7 @@ export default {
   display: flex;
   justify-content: center;
   &__container {
-    width: 900px;
+    min-width: 900px;
   }
   &__primary-info {
     display: flex;
