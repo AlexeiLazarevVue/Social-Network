@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import multer from 'multer';
 import postRouter from './routers/postRouter.js';
 import userRouter from './routers/userRouter.js';
+import messageRouter from './routers/messageRouter.js';
 
 const PORT = 5000;
 
@@ -29,6 +30,7 @@ app.use(
 );
 app.use('/api', postRouter);
 app.use('/api', userRouter);
+app.use('/api', messageRouter)
 
 async function startApp() {
   try {
