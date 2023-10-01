@@ -4,7 +4,15 @@ class MessageController {
   async getMessagesFromTo(request, response) {
     const { userId, toId } = request.body
 
-    const messages = await Message.find({ userId: userId, toId, toId })
+    const messages = await Message.find({ userId: userId, toId: toId })
+
+    return response.json(messages)
+  }
+
+  async getAllUserMessages(request, response) {
+    const { userId } = request.body
+
+    const messages = await Message.find({ $and: [{ $or: [{ userId: userId }, { toId: userId }] }, { showTo: userId }] })
 
     return response.json(messages)
   }
